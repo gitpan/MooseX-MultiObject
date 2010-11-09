@@ -1,6 +1,6 @@
 package MooseX::MultiObject::Role;
 BEGIN {
-  $MooseX::MultiObject::Role::VERSION = '0.01';
+  $MooseX::MultiObject::Role::VERSION = '0.02';
 }
 # ABSTRACT: role that a MultiObject does
 use Moose::Role;
@@ -19,7 +19,7 @@ MooseX::MultiObject::Role - role that a MultiObject does
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

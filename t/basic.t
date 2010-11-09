@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Test::Exception;
 use Scalar::Util qw(refaddr);
 use Moose::Util qw(does_role);
 
@@ -55,5 +56,44 @@ for(1..2){
 
 ok does_role('Set', 'MooseX::MultiObject::Role'), 'does multiobject role';
 ok does_role('Set', 'Role'), 'does { role => ... } role';
+
+{ package Class;
+  use Moose;
+  use MooseX::APIRole;
+  sub foo {}
+  make_api_role 'Class::API';
+}
+
+{ package Class::Alike;
+  use Moose;
+  with 'Class::API';
+  sub foo {}
+}
+
+{ package Multi::Class;
+  use Moose;
+  use MooseX::MultiObject;
+
+  setup_multiobject (
+      class => 'Class',
+  );
+
+  __PACKAGE__->meta->make_immutable;
+}
+
+ok does_role('Multi::Class', 'Class::API'), 'Multi::Class does the API role';
+can_ok 'Multi::Class', 'foo';
+
+my $multi = Multi::Class->new;
+lives_ok {
+    $multi->add_managed_object(Class->new);
+} 'adding Class is ok';
+
+throws_ok {
+    $multi->add_managed_object(Class::Alike->new);
+} qr/not an object that can be added/, 'a class-alike is not good enough';
+
+lives_ok { $multi->foo }
+    'you can still use the object even after touching it inappropriately';
 
 done_testing;

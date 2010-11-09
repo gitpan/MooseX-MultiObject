@@ -9,10 +9,13 @@ use ExtUtils::MakeMaker 6.31;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'make a set of objects behave like a single object',
+  'ABSTRACT' => 'a class that delegates an interface to a set of objects that do that interface',
   'AUTHOR' => 'Jonathan Rockway <jrockway@cpan.org>',
   'BUILD_REQUIRES' => {
+    'Class::API' => '0',
+    'MooseX::APIRole' => '0',
     'Scalar::Util' => '0',
+    'Test::Exception' => '0',
     'Test::More' => '0'
   },
   'CONFIGURE_REQUIRES' => {
@@ -28,6 +31,7 @@ my %WriteMakefileArgs = (
     'Moose' => '0',
     'Moose::Exporter' => '0',
     'Moose::Meta::Method' => '0',
+    'Moose::Meta::TypeConstraint::Class' => '0',
     'Moose::Meta::TypeConstraint::Role' => '0',
     'Moose::Role' => '0',
     'Moose::Util' => '0',
@@ -38,7 +42,7 @@ my %WriteMakefileArgs = (
     'parent' => '0',
     'true' => '0'
   },
-  'VERSION' => '0.01',
+  'VERSION' => '0.02',
   'test' => {
     'TESTS' => 't/*.t'
   }

@@ -1,8 +1,8 @@
 package MooseX::MultiObject::Meta::Method::MultiDelegation;
 BEGIN {
-  $MooseX::MultiObject::Meta::Method::MultiDelegation::VERSION = '0.01';
+  $MooseX::MultiObject::Meta::Method::MultiDelegation::VERSION = '0.02';
 }
-# ABSTRACT: method that delegates to a set of object
+# ABSTRACT: method that delegates to a set of objects
 use strict;
 use warnings;
 use true;
@@ -63,16 +63,59 @@ sub _initialize_body {
     };
 }
 
-__END__
+
+
 =pod
 
 =head1 NAME
 
-MooseX::MultiObject::Meta::Method::MultiDelegation - method that delegates to a set of object
+MooseX::MultiObject::Meta::Method::MultiDelegation - method that delegates to a set of objects
 
 =head1 VERSION
 
-version 0.01
+version 0.02
+
+=head1 SYNOPSIS
+
+Given a class that C<has> a set of objects:
+
+    my $meta = Moose::Meta::Class->create( ... );
+    $meta->add_attribute ( objects => (
+        is => 'ro', isa => 'Set', handles => ['members'],
+    );
+
+Make a method foo to call foo on every element of the set:
+
+    my $foo_metamethod = MooseX::MultiObject::Meta::Method::MultiDelegation->new(
+        object_getter => 'members',
+        delegate_to   => 'foo',
+    );
+
+    $meta->add_method( foo => $foo_metamethod );
+
+Then you can write:
+
+    my $class = $meta->name->new( objects => [ $a, $b ] );
+    my @results = $class->foo;
+
+Which is equivalent to:
+
+    my $set = set($a, $b);
+    my @results = map { $_->foo } $set->members;
+
+=head1 DESCRIPTION
+
+This is a C<Moose::Meta::Method> and C<Class::MOP::Method::Generated>
+that works like C<Moose::Meta::Method::Delegation>, except it
+delegates to a collection of objects instead of just one.
+
+=head1 INITARGS
+
+=head2 curried_arguments
+
+=head2 delegate_to
+
+=head2 object_getter
 
 =head1 AUTHOR
 
@@ -86,4 +129,7 @@ This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
 

@@ -1,6 +1,6 @@
 package MooseX::MultiObject::Meta::Class;
 BEGIN {
-  $MooseX::MultiObject::Meta::Class::VERSION = '0.01';
+  $MooseX::MultiObject::Meta::Class::VERSION = '0.02';
 }
 # ABSTRACT: metarole for MultiObject metaclass
 use Moose::Role;
@@ -23,7 +23,7 @@ MooseX::MultiObject::Meta::Class - metarole for MultiObject metaclass
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

@@ -1,9 +1,9 @@
 
 
 This archive contains the distribution MooseX-MultiObject,
-version 0.01:
+version 0.02:
 
-  make a set of objects behave like a single object
+  a class that delegates an interface to a set of objects that do that interface
 
 This software is copyright (c) 2010 by Jonathan Rockway.
 

@@ -1,9 +1,12 @@
 ---
-abstract: 'make a set of objects behave like a single object'
+abstract: 'a class that delegates an interface to a set of objects that do that interface'
 author:
   - 'Jonathan Rockway <jrockway@cpan.org>'
 build_requires:
+  Class::API: 0
+  MooseX::APIRole: 0
   Scalar::Util: 0
+  Test::Exception: 0
   Test::More: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.31
@@ -20,6 +23,7 @@ requires:
   Moose: 0
   Moose::Exporter: 0
   Moose::Meta::Method: 0
+  Moose::Meta::TypeConstraint::Class: 0
   Moose::Meta::TypeConstraint::Role: 0
   Moose::Role: 0
   Moose::Util: 0
@@ -31,7 +35,7 @@ requires:
   true: 0
 resources:
   repository: http://github.com/jrockway/moosex-multiobject
-version: 0.01
+version: 0.02
 x_Dist_Zilla:
   plugins:
     -
@@ -173,5 +177,5 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: 1
+      is_trial: 0
     version: 4.102342
