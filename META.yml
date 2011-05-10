@@ -3,7 +3,6 @@ abstract: 'a class that delegates an interface to a set of objects that do that 
 author:
   - 'Jonathan Rockway <jrockway@cpan.org>'
 build_requires:
-  Class::API: 0
   MooseX::APIRole: 0
   Scalar::Util: 0
   Test::Exception: 0
@@ -35,7 +34,7 @@ requires:
   true: 0
 resources:
   repository: http://github.com/jrockway/moosex-multiobject
-version: 0.02
+version: 0.03
 x_Dist_Zilla:
   plugins:
     -
@@ -156,6 +155,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::RemovePrereqs:
           modules_to_remove:
             - Role
+            - Class::API
       name: RemovePrereqs
       version: 4.102342
     -

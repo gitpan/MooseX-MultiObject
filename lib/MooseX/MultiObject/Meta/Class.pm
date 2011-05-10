@@ -1,6 +1,6 @@
 package MooseX::MultiObject::Meta::Class;
 BEGIN {
-  $MooseX::MultiObject::Meta::Class::VERSION = '0.02';
+  $MooseX::MultiObject::Meta::Class::VERSION = '0.03';
 }
 # ABSTRACT: metarole for MultiObject metaclass
 use Moose::Role;
@@ -23,7 +23,7 @@ MooseX::MultiObject::Meta::Class - metarole for MultiObject metaclass
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 AUTHOR
 
@@ -31,7 +31,7 @@ Jonathan Rockway <jrockway@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by Jonathan Rockway.
+This software is copyright (c) 2011 by Jonathan Rockway.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

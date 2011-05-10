@@ -12,7 +12,6 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'a class that delegates an interface to a set of objects that do that interface',
   'AUTHOR' => 'Jonathan Rockway <jrockway@cpan.org>',
   'BUILD_REQUIRES' => {
-    'Class::API' => '0',
     'MooseX::APIRole' => '0',
     'Scalar::Util' => '0',
     'Test::Exception' => '0',
@@ -42,7 +41,7 @@ my %WriteMakefileArgs = (
     'parent' => '0',
     'true' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t'
   }

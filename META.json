@@ -40,7 +40,6 @@
       },
       "test" : {
          "requires" : {
-            "Class::API" : 0,
             "MooseX::APIRole" : 0,
             "Scalar::Util" : 0,
             "Test::Exception" : 0,
@@ -54,7 +53,7 @@
          "url" : "http://github.com/jrockway/moosex-multiobject"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
@@ -202,7 +201,8 @@
             "config" : {
                "Dist::Zilla::Plugin::RemovePrereqs" : {
                   "modules_to_remove" : [
-                     "Role"
+                     "Role",
+                     "Class::API"
                   ]
                }
             },
